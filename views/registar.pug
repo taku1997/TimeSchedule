@@ -1,0 +1,32 @@
+extends layout
+
+block content
+  block content
+  .container
+    br
+    div.jumbotron.my-3
+      h1.display-5.text-center 新規登録
+      br
+      if status == 'not_found'
+        h5 その名前orパスワードは使われています
+      if status == 'not_secret'
+        h5 合言葉が間違っています。
+      div     
+        form.text-centr(role='form', action="/registar",method="post")
+          .form-group.row
+            h5.col-sm-3.col-form-label(for="staticEmail") ユーザネーム
+            div.col-sm-9
+              input.form-control(type='text', name="username", placeholder='Username')
+          .form-group.row
+            h5.col-sm-3.col-form-label(for="staticEmail") パスワード
+            div.col-sm-9
+              input.form-control(type='password', name="password", placeholder='Password')
+          .form-group.row
+            h5.col-sm-3.col-form-label(for="staticEmail") 合言葉
+            div.col-sm-9
+              input.form-control(type='password', name="secretword", placeholder='Secretword')
+          br
+          div.text-center 
+            button.btn.btn-info.col-sm-4(type='submit') 登録
+            a.col-sm-4.offset-2(href="/login").btn.btn-info 戻る
+          

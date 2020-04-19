@@ -1,0 +1,7 @@
+{
+  "name": "TimeTable",
+  "description": "デジタルコマ表",
+  "logo": "",
+  "keywords": ["node"],
+  "image": "heroku/nodejs"
+}

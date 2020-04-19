@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  .container
+    br
+    div.jumbotron.my-3
+      h1.display-5.text-center Jack and Beans
+      br
+      br
+      form.text-centr(role='form', action="/login",method="post")
+        .form-group.row
+          h5.col-sm-3.col-form-label(for="staticEmail") ユーザネーム
+          div.col-sm-9
+           input.form-control(type='text', name="username", placeholder='Username')
+        .form-group.row
+          h5.col-sm-3.col-form-label(for="staticEmail") パスワード
+          div.col-sm-9
+            input.form-control(type='password', name="password", placeholder='Password')
+        br
+        div.text-center
+          button.btn.btn-info.col-sm-4(type='submit') ログイン
+          a.col-sm-4.offset-2(href="/registar").btn.btn-info 新規登録
+      

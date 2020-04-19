@@ -1,5 +1,79 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  - var week = ['木曜日','金曜日','土曜日','日曜日','月曜日','火曜日','水曜日']
+  - var time = ['１限','2限','昼','3限','4限','5限','夜1','夜2'] 
+
+  div.container
+  if (user)
+    p こんにちは #{user.username} さん
+
+    br
+  
+  table.table.table-bordered(cellpadding="0")
+    tr
+      th 
+      th 木曜日
+      th 金曜日
+      th 土曜日
+      th 日曜日
+      th 月曜日
+      th 火曜日
+      th 水曜日
+    //コマ表
+    - for (var x = 0; x < 8; x++)
+      tr
+      th(width="5",height="5") #{time[x]}
+      - for (var y = 0; y < 7; y++)
+        if createdBy[x][y] != '' && user.id != createdBy[x][y]  
+           th(height="75",width="75",id="coma")
+            div
+              div(style="text-align:center")
+               p #{band_name[x][y]}
+               p #{responsible_person[x][y]}
+        
+        else
+          th(height="70",width="70",data-vertical=time[x],data-side=week[y],data-infox=x,data-infoy=y,data-band=band_name[x][y],data-person=responsible_person[x][y],data-toggle="modal",data-target="#testModal")
+            div
+             div(style="text-align:center")
+               p #{band_name[x][y]}
+               p #{responsible_person[x][y]}
+                 //a(data-toggle="modal",data-target="#testModal", data-vertical=x, data-side=y)
+                 //data-toggle="modal",data-target="#testModal"
+    
+  <div class="box_title">パス履歴</div>
+  <div class="box_srcollbar">
+    each comment in comments
+      p #{comment.formattedUpdatedAt}　　　#{comment.band_name}がパスされました。 
+  </div>
+        
+       
+    //モーダルの処理(まだあんまりわかってない)
+    div#testModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='basicModal', aria-hidden='true')
+      div.modal-dialog
+        div.modal-content
+          form(action="/", method="post",id="form")
+            div.modal-header
+              h4#myModalLabel.modal-title コマ投稿フォーム
+            div.modal-body
+              br
+              input(type="hidden" name="_csrf" value!=csrfToken)
+              label バンド名 or ハイテク：(空白はNG)
+              input(type="text", name="band_name",id="band_name").form-control
+              br
+              label 責任者名：(空白はNG)
+              input(type="text", name="responsible_person",id="responsible_person").form-control
+              input(type="hidden" name="timetable_info_weekday" id="x")
+              input(type="hidden" name="timetable_info_period" id="y")
+              br
+              input(type='radio', name='select', value='send')
+              | 送信
+              input(type='radio', name='select', value='pass')
+              | パス
+              //input(type="radio",name="性別",value="",checked="checked",style="display:none;"）
+            div.modal-footer
+              button.btn.btn-default(type='button', data-dismiss='modal') 閉じる
+              button.btn.btn-info(type='submit',id="decision") 決定 
+
+  script(src="/javascripts/index_front.js")
+   
