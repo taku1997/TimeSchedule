@@ -22,9 +22,9 @@
     "pg": "7.4.1",
     "pg-hstore": "2.3.2",
     "pug": "2.0.0-beta11",
-    "sequelize": "4.33.4"
+    "sequelize": "^5.21.6"
   },
   "engines": {
-    "node": "~10"
-   }
+    "node": "~12.14.0"
+  }
 }
