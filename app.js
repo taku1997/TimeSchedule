@@ -4,16 +4,16 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users'); 
 var loginRouter = require('./routes/login');
 var logoutRouter = require('./routes/logout');
 var registarRouter = require('./routes/registar'); 
+var adminRouter = require('./routes/admin'); 
 
 const helmet = require('helmet');
 const passport = require('passport');
 const session = require('express-session');
 const LocalStrategy = require('passport-local').Strategy;
-var bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt');
 
 //データベースの設定ーーーーーーーーーーーーーーーーーーーーーーーーー
 var User = require('./models/user');
@@ -44,10 +44,11 @@ app.use(passport.session());
 
 //ルートの設定ーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+//app.use('/users', usersRouter);
 app.use('/login',loginRouter);
 app.use('/logout',logoutRouter);
 app.use('/registar',registarRouter);
+app.use('/admin',adminRouter);
 
 
 //ログインの設定ーーーーーーーーーーーーーーーーーーーーーーーーーーーー

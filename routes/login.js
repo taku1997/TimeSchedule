@@ -8,7 +8,7 @@ router.get('/', function(req, res) {
 });
 
 router.post('/', passport.authenticate('local', {
-  successRedirect: 'http://localhost:8000/',
+  successRedirect: '/',
   failureRedirect: '/login',
   session: true
 }));

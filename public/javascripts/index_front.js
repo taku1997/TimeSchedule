@@ -1,11 +1,4 @@
 'use strict';
-/*
-function changeImg1(user,creater){
-  console.log(user)
-  if (user === creater || creater === '' ){
-    $('#testModal').modal('show');
-  }
-}*/
 
 $("#testModal").on('show.bs.modal',function(event){
   var link = $(event.relatedTarget);

@@ -3,13 +3,7 @@ const loader = require('./sequelize-loader');
 const Sequelize = loader.Sequlize;
 
 const Timetable = loader.database.define('timetables',{
-  /*timetableId: {
-    type: Sequelize.INTEGER,
-    primaryKey: true,
-    autoIncrement: true,
-    allowNull: false
-  },
-  */
+
   band_name: {
     type: Sequelize.STRING,
     allowNull: false
@@ -35,12 +29,6 @@ const Timetable = loader.database.define('timetables',{
 },{
   freezeTableName: true,
   timestamps: false,
- /* indexes: [
-    {
-      fields: ['createdBy']
-    }
-  ]
-  */
 });
 
 module.exports = Timetable;

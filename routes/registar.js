@@ -16,7 +16,7 @@ router.post('/',function(req,res,next){
         password: bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(8)),
       }
     }).then(([user,created]) => {
-      if(created){//新規登録されたなら
+      if(created){
         res.redirect('/login');
       }else{
         res.render('registar',{status: 'not_found'});
@@ -28,4 +28,3 @@ router.post('/',function(req,res,next){
 });
 
 module.exports = router;
-  //hash: hash

@@ -1,10 +1,21 @@
 body {
-  padding: 50px;
+  /*padding: 50px;*/
+  font: 12px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+.container{
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
+.col-form-label{
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  padding-left: 20px;
 }
 
 a {
   color: #008000;
+  
 }
 
 table th{ 
@@ -17,10 +28,20 @@ table th{
   color: #404040; 
 }
 
-table th#id a{
-  display:block;
-  width:100%;
-  height:100%;
+
+th#time{
+  width: 2px;
+  height: auto;
+  padding: 4px;
+  writing-mode: vertical-rl;
+  text-align: center;
+} 
+
+th#coma{
+  padding: 0px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  text-align: center;
 } 
 
 table th:hover{
@@ -29,9 +50,9 @@ table th:hover{
 
 .box_srcollbar {
   overflow:auto;
-  width:500px;
+  width:100%;
   height:80px;
-  padding:5px;
+  padding:3px;
   border:1px solid #000;
   background-color:#F9F9F9;
   color:#000;
@@ -40,7 +61,7 @@ table th:hover{
 .box_title{
   border:1px solid #000;
   padding:5px;
-  width:300px;
+  width:370px;
   font-weight:bold;
   font-size:14px;
   background-color:#000;
@@ -62,4 +83,8 @@ table th:hover{
     background-color: #ffffff;
     border: solid transparent;
     border-width: 1px 0;
+}
+
+#login{
+  margin: 20px;
 }
