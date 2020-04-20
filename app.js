@@ -63,14 +63,19 @@ passport.use(new LocalStrategy({
     User.findOne({
       where: {username:username}
     }).then((user) => {
-      if (username === user.username && bcrypt.compareSync(password, user.password)) {
-        return done(null, {username,id: user.userId});
-      } else {
+      if(!username || !password){
+        if (username === user.username && bcrypt.compareSync(password, user.password)) {
+          return done(null, {username,id: user.userId});
+        } else {
+          console.log("login error");
+          return done(null, false, { message: 'パスワードが正しくありません。' });
+        }
+      }else{
         console.log("login error");
-        return done(null, false, { message: 'パスワードが正しくありません。' });
+          return done(null, false, { message: 'ユーザネームまたはパスワードが入力されていません' });
       }
-    })
-  }) 
+    });
+  }); 
 }));
 
 //シリアライズ(データをファイルとして保存できる形式に変換)
