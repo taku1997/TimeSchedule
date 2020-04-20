@@ -30,9 +30,9 @@ table th{
 
 
 th#time{
-  width: 2px;
+  width: 5px;
   height: auto;
-  padding: 4px;
+  padding: 5px;
   writing-mode: vertical-rl;
   text-align: center;
 } 
