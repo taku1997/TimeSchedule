@@ -61,10 +61,10 @@ passport.use(new LocalStrategy({
   process.nextTick(function () {
     //TODO データベースからの読み出し
     User.findOne({
-      where: {username:username}
+      where: {username}
     }).then((user) => {
       if(username && password){
-        if (username === user.username && bcrypt.compareSync(password, user.password)) {
+        if (user !== null && bcrypt.compareSync(password, user.password)) {
           return done(null, {username,id: user.userId});
         } else {
           console.log("login error");
@@ -72,7 +72,7 @@ passport.use(new LocalStrategy({
         }
       }else{
         console.log("login error");
-          return done(null, false, { message: 'ユーザネームまたはパスワードが入力されていません' });
+        return done(null, false, { message: 'ユーザネームまたはパスワードが入力されていません' });
       }
     });
   }); 

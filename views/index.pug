@@ -1,12 +1,12 @@
 extends layout
 
 block content
-  - var week = ['木曜日','金曜日','土曜日','日曜日','月曜日','火曜日','水曜日']
-  - var time = ['１限','2限','昼','3限','4限','5限','夜1','夜2'] 
+  - const week = ['木曜日','金曜日','土曜日','日曜日','月曜日','火曜日','水曜日']
+  - const time = ['１限','2限','昼','3限','4限','5限','夜1','夜2'] 
 
   div.container
   if (user)
-    p こんにちは #{user.username} さん
+    p.lead.text-white こんにちは #{user.username} さん
 
     br
   
