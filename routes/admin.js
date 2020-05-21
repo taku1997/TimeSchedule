@@ -1,9 +1,9 @@
-var express = require('express');
-var router = express.Router();
-var Comment = require('../models/comment');
+const express = require('express');
+const router = express.Router();
+const Comment = require('../models/comment');
 const csrf = require('csurf');
 const csrfProtection = csrf({ cookie: true });
-var authenticationEnsurer = require('./authentication-ensurer');
+const authenticationEnsurer = require('./authentication-ensurer');
 
 
 router.get('/',authenticationEnsurer,(req,res,next) => {

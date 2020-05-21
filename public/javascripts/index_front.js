@@ -1,13 +1,13 @@
 'use strict';
 
 $("#testModal").on('show.bs.modal',function(event){
-  var link = $(event.relatedTarget);
-  var vertical = link.data("vertical");
-  var side = link.data("side");
-  var x = link.data("infox");
-  var y = link.data("infoy");
-  var band = link.data("band");
-  var person = link.data("person");
+  const link = $(event.relatedTarget);
+  const vertical = link.data("vertical");
+  const side = link.data("side");
+  const x = link.data("infox");
+  const y = link.data("infoy");
+  const band = link.data("band");
+  const person = link.data("person");
 
   var modal = $(this);
   modal.find('.modal-title').text(`コマ投稿フォーム ${vertical}：${side}`);
@@ -23,7 +23,7 @@ $("#testModal").on('show.bs.modal',function(event){
 });
 
 $('#form').submit(function() {
-  var r = $('input[name="select"]:checked').val();
+  let r = $('input[name="select"]:checked').val();
     if (!r) {alert('空白で入力されていますよ'); return false;}
     if (r == 'send'){
       if ($.trim($("#band_name").val()) === "" || $.trim($("#responsible_person").val()) === "") {

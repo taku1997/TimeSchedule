@@ -1,16 +1,16 @@
-var express = require('express');
-var router = express.Router();
-var passport = require('passport');
-var authenticationEnsurer = require('./authentication-ensurer');
-var Timetable = require('../models/timetable');
-var User = require('../models/user');
-var Commnet = require('../models/comment');
+const express = require('express');
+const router = express.Router();
+const passport = require('passport');
+const authenticationEnsurer = require('./authentication-ensurer');
+const Timetable = require('../models/timetable');
+const User = require('../models/user');
+const Commnet = require('../models/comment');
 const moment = require('moment-timezone');
 const csrf = require('csurf');
 const csrfProtection = csrf({ cookie: true });
-var band_TimeTable = (new Array(8)).fill("").map(() => (new Array(9)).fill(""));
-var person = (new Array(8)).fill("").map(() => (new Array(9)).fill(""));
-var creater = (new Array(8)).fill("").map(() => (new Array(9)).fill(""));
+let band_TimeTable = (new Array(8)).fill("").map(() => (new Array(9)).fill(""));
+let person = (new Array(8)).fill("").map(() => (new Array(9)).fill(""));
+let creater = (new Array(8)).fill("").map(() => (new Array(9)).fill(""));
 
 router.get('/',authenticationEnsurer,csrfProtection,function(req, res, next) {
   Timetable.findAll({

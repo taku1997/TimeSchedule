@@ -1,7 +1,7 @@
-var express = require('express');
-var router = express.Router();
-var bcrypt = require('bcrypt');
-var User = require('../models/user');
+const express = require('express');
+const router = express.Router();
+const bcrypt = require('bcrypt');
+const User = require('../models/user');
 
 router.get('/',(req,res,next) => {
   res.render('registar')
