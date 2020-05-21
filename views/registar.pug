@@ -4,7 +4,7 @@ block content
   block content
   .container
     br
-    div.jumbotron.my-3
+    div.jumbotron.m-sm-5
       h1.display-5.text-center 新規登録
       br
       if status == 'not_found'
@@ -27,6 +27,6 @@ block content
               input.form-control(type='password', name="secretword", placeholder='Secretword')
           br
           div.text-center 
-            button.btn.btn-info.col-3(type='submit',id="login") 登録
-            a.col-3(href="/login",id="login").btn.btn-info 戻る
+            button.btn.btn-info.col-4(type='submit',id="login") 登録
+            a.col-4(href="/login",id="login").btn.btn-info 戻る
           
