@@ -2,13 +2,14 @@ extends layout
 
 block content
   .container
-    h5 管理者ページ
-    form(action="/delete", method="post")
-      input(type="hidden" name="_csrf" value!=csrfToken)
-      button(type="submit") コマ表データベース初期化
-    br
-    br
-    form(action="/admin/comment", method="post")
-      input(type="hidden" name="_csrf" value!=csrfToken)
-      button(type="submit") コメントデータベース初期化
+    div(class="admin")
+      h5 管理者ページ
+      form(action="/delete", method="post")
+        input(type="hidden" name="_csrf" value!=csrfToken)
+        button(type="submit") コマ表データベース初期化
+      br
+      br
+      form(action="/admin/comment", method="post")
+        input(type="hidden" name="_csrf" value!=csrfToken)
+        button(type="submit") コメントデータベース初期化
 
