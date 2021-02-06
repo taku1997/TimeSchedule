@@ -1,24 +1,26 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var indexRouter = require('./routes/index');
-var loginRouter = require('./routes/login');
-var logoutRouter = require('./routes/logout');
-var registarRouter = require('./routes/registar'); 
-var adminRouter = require('./routes/admin'); 
-
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 const helmet = require('helmet');
 const passport = require('passport');
 const session = require('express-session');
 const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcrypt');
+const cron = require('node-cron');
+
+const indexRouter = require('./routes/index');
+const loginRouter = require('./routes/login');
+const logoutRouter = require('./routes/logout');
+const registarRouter = require('./routes/registar'); 
+const adminRouter = require('./routes/admin');
+
 
 //データベースの設定ーーーーーーーーーーーーーーーーーーーーーーーーー
-var User = require('./models/user');
-var Timetable = require('./models/timetable');
-var Comment = require('./models/comment');
+const User = require('./models/user');
+const Timetable = require('./models/timetable');
+const Comment = require('./models/comment');
 User.sync().then(() => {
   Timetable.belongsTo(User,{foreginKey:'createdBy'});
   Timetable.sync();
@@ -85,6 +87,21 @@ passport.serializeUser(function (user,done){
 //デシリアライズ（シリアライズした情報をプログラムで処理できるように解凍）
 passport.deserializeUser(function(user,done){
   done(null,user);
+})
+
+
+//タイムテーブルデータの初期化 
+cron.schedule('59 59 23 * * *',() => {
+  let nowDate = new Date().getDate();
+  console.log(nowDate)
+  const jack_week = [3,4,5,6,0,1,2]
+  Timetable.findAll({
+    where:{timetable_info_period: jack_week[nowDate]}
+  }).then(contents => {
+    contents.forEach(content => {
+      content.destroy().then(() => {console.log("データベースの初期化")});
+    });
+  });
 })
 
 

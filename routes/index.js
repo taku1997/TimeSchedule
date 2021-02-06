@@ -87,8 +87,6 @@ router.post('/',csrfProtection,(req,res,next) => {
 });
 
 //管理者デリート機能
-
-
 router.post('/delete',csrfProtection,(req,res,next) => {
   Timetable.findAll({
     include: [

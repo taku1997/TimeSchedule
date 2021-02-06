@@ -49,10 +49,10 @@ block content
               div.modal-body
                 br
                 input(type="hidden" name="_csrf" value!=csrfToken)
-                label バンド名 or ハイテク：(空白はNG:最大7文字)
+                label バンド名 or ハイテク：(空白はNG)
                 input(type="text", name="band_name",id="band_name",maxlength='7').form-control
                 br
-                label 責任者名：(空白はNG:最大7文字)
+                label 責任者名：(空白はNG)
                 input(type="text", name="responsible_person",id="responsible_person",maxlength='7').form-control
                 input(type="hidden" name="timetable_info_weekday" id="x")
                 input(type="hidden" name="timetable_info_period" id="y")

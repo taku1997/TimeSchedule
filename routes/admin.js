@@ -6,8 +6,10 @@ const csrfProtection = csrf({ cookie: true });
 const authenticationEnsurer = require('./authentication-ensurer');
 
 
-router.get('/',authenticationEnsurer,(req,res,next) => {
-  res.render('admin',{csrfToken: req.csrfToken()})
+router.get('/',authenticationEnsurer,csrfProtection,(req,res,next) => {
+  res.render('admin',{
+    csrfToken: req.csrfToken()
+  })
 });
 
 router.post('/comment',authenticationEnsurer,csrfProtection,function(req,res,next){
