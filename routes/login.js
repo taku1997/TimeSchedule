@@ -4,12 +4,14 @@ const passport = require('passport');
 
 
 router.get('/', function(req, res) {
-  res.render('login', { user : req.user });
+  const errorMessage = req.flash('error')
+  res.render('login', { user : req.user, message: errorMessage});
 });
 
 router.post('/', passport.authenticate('local', {
   successRedirect: '/',
   failureRedirect: '/login',
+  failureFlash: true,
   session: true
 }));
 

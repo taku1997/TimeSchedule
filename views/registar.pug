@@ -16,15 +16,15 @@ block content
           .form-group.row
             h4.col-sm-3.col-form-label(for="staticEmail") ユーザネーム：
             div.col-sm-9
-              input.form-control(type='text', name="username", placeholder='Username')
+              input.form-control(type='text', name="username", placeholder='Username', required="required")
           .form-group.row
             h4.col-sm-3.col-form-label(for="staticEmail") パスワード：
             div.col-sm-9
-              input.form-control(type='password', name="password", placeholder='Password')
+              input.form-control(type='password', name="password", placeholder='Password', required="required")
           .form-group.row
             h4.col-sm-3.col-form-label(for="staticEmail") 合言葉：
             div.col-sm-9
-              input.form-control(type='password', name="secretword", placeholder='Secretword')
+              input.form-control(type='password', name="secretword", placeholder='Secretword', required="required")
           br
           div.text-center 
             button.btn.btn-info.col-4(type='submit',id="login") 登録

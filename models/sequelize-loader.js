@@ -4,9 +4,9 @@ const sequelize = new Sequelize(
   process.env.DATABASE_URL || 'postgres://postgres:postgres@localhost/timetable',
   {
     operatorsAliases: false,
-    dialectOptions: {
-      ssl: true
-    }
+    // dialectOptions: {
+    //   ssl: true
+    // }
   }
 );
 

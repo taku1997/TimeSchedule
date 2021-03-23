@@ -9,6 +9,7 @@ const session = require('express-session');
 const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcrypt');
 const cron = require('node-cron');
+const flash = require('connect-flash');
 
 const indexRouter = require('./routes/index');
 const loginRouter = require('./routes/login');
@@ -43,6 +44,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({secret:'922a9ce9b228a4c6'}))
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash());
 
 //ルートの設定ーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 app.use('/', indexRouter);
@@ -70,7 +72,7 @@ passport.use(new LocalStrategy({
           return done(null, {username,id: user.userId});
         } else {
           console.log("login error");
-          return done(null, false, { message: 'パスワードが正しくありません。' });
+          return done(null, false, { message: 'ユーザー名 or パスワードが正しくありません。' });
         }
       }else{
         console.log("login error");
@@ -104,6 +106,11 @@ cron.schedule('59 59 23 * * *',() => {
   });
 })
 
+//コメントデータ初期化
+// cron.schedule('59 59 23 1 * *' , () => {
+  
+// })
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
@@ -116,7 +123,7 @@ app.use(function(err, req, res, next) {
   res.locals.error = req.app.get('env') === 'development' ? err : {};
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.render('error',);
 });
 
 module.exports = app;
